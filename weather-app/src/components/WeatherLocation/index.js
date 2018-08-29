@@ -1,12 +1,13 @@
 // Transforming the WeatherLocation functional component to class component
 // import React from 'react';
 import React, {Component} from 'react';
-import convert from 'convert-units';
 import Location from './Location';
 import WeatherData from './WeatherData';
+import transformWeather from './../../services/transformWeather';
 import { SUN } from './../../constants/weathers';
 import './styles.css';
-const location = 'Tabasco,mx';
+
+const location = 'Villahermosa,mx';
 const apiKey = '84b353d0a9367047b3ee3fc18e4afa07';
 const apiWeather =  `http://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${apiKey}`;
 
@@ -27,48 +28,27 @@ const data = {
 
 // This extend from the 3th line we are extracting just one component 
 class WeatherLocation extends Component {
+
 	constructor(){
 		super();
 		this.state = {
-			city: 'Tabasco',
+			city: 'Villahermosa',
 			data: data
 	};
 }
-	getTemp = kelvin =>{
-		return convert(kelvin).from('K').to('C').toFixed(0);
-	}
-	getWeatherState = weather =>{
-		return SUN;
-	}
-	getData = (weather_data) => {
-
-		const{ humidity,temp }= weather_data.main;
-		const{ speed } = weather_data.wind;
-		const weatherState = this.getWeatherState(this.weather);
-		const temperature = this.getTemp(temp);
-
-		const data = {
-			humidity,
-			temperature,
-			weatherState,
-			wind: `${ speed } m/s`,
-		}
-		return data;
-	}
 
 	handleUpdateClick = () => {
 	fetch(apiWeather).then(data => {
 		console.log(data);
 		return data.json();
-		debugger;
 	}).then(weather_data => {
-		const data = this.getData(weather_data);
+		debugger;
+		const data = transformWeather(weather_data);
 		this.setState({data});
-
-		console.log(weather_data);
 	});
-		console.log("actualizado");
+		console.log("Actualizado");
 		}
+
 	render = () => {
 		const {city,data}=this.state;
 		return(
