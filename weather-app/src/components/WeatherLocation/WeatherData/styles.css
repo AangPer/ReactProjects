@@ -1,0 +1,44 @@
+.weatherDataCont {
+    background-color: #4D7D84;
+    width: 100%;
+    line-height: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+
+.weatherTemperatureCont {
+   width: 40%;
+    display: inline-block;
+    line-height: 100px;
+    /*background-color: #FF33FF;*/
+}
+
+.weatherExtraInfoCont {
+    width: 60%;
+    display: inline-block;
+    line-height: 30px;
+    /*background-color: #ffff3a;*/
+}
+
+.temperature {
+   font-size: 35px;
+   font-weight: bold;
+   padding-left: 20px;
+   color: #263238;
+}
+
+.temperatureType {
+	color: #263238;
+	font-weight: bold;
+}
+
+.extraInfoText {
+   display: block;
+   color: #ffffff;
+   text-align: justify;
+   font-size: 25px;
+}
+
+.wicon {
+	color: #263238;
+}
