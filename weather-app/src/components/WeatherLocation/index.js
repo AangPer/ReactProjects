@@ -1,11 +1,12 @@
 // Transforming the WeatherLocation functional component to class component
 // import React from 'react';
 import React, {Component} from 'react';
+import convert from 'convert-units';
 import Location from './Location';
 import WeatherData from './WeatherData';
 import { SUN } from './../../constants/weathers';
 import './styles.css';
-const location = 'Villahermosa,mx';
+const location = 'Tabasco,mx';
 const apiKey = '84b353d0a9367047b3ee3fc18e4afa07';
 const apiWeather =  `http://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${apiKey}`;
 
@@ -29,10 +30,13 @@ class WeatherLocation extends Component {
 	constructor(){
 		super();
 		this.state = {
-			city: 'Villahermosa',
+			city: 'Tabasco',
 			data: data
 	};
 }
+	getTemp = kelvin =>{
+		return convert(kelvin).from('K').to('C').toFixed(0);
+	}
 	getWeatherState = weather =>{
 		return SUN;
 	}
@@ -41,10 +45,11 @@ class WeatherLocation extends Component {
 		const{ humidity,temp }= weather_data.main;
 		const{ speed } = weather_data.wind;
 		const weatherState = this.getWeatherState(this.weather);
+		const temperature = this.getTemp(temp);
 
 		const data = {
 			humidity,
-			temperature: temp,
+			temperature,
 			weatherState,
 			wind: `${ speed } m/s`,
 		}
