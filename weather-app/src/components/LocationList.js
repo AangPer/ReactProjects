@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import WeatherLocation from './WeatherLocation';
 
 const strToComponent = cities => (
-    cities.map( city => (<WeatherLocation city={city} />))
-    // Como repaso hay que decir que aqui creamos una funcion llamada strToComponent quien  transformara todo el string de el array cities en App.js y los tansformaremos en los componenetes de WeatherLocation, en cities.map donde .map permitira obtener todos los array almacenarlos y convertirlos en weatherlocation components en el funcionamieto la palabra city obtiene solo una cidad de las ciudades mapeadas en cities.map
+    cities.map( city => (<WeatherLocation key={city} city={city} />))
+    //Well in this video named 6. Key use in component lists key is one of the advantage of react, key identify one object of the array like a unique object and this is a great tool because if an object change react not rendering all the elements just update the element tha has changed and oviously at the moment of rendering this process is faster. Mor einfo here http://bit.ly/2Cge4lu
 );
 const LocationList = ({cities}) =>(
   <div>
