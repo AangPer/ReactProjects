@@ -27,10 +27,8 @@
 }
 
 .detail {
-  background: rgb(41, 23, 119);
-  color: white;
-  font-weight: bold;
-  font-size: 2em;
+  margin-top: 10px;
+  background:  #263238;
   height: 100vh;
   width: 100%;
 }

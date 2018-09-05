@@ -4,3 +4,12 @@
     overflow: auto;
   }
 }
+
+.forecastTitle{
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Montserrat Alternates';
+  margin: 0px 0px 0px 0px;
+  padding: 10px 0px 0px 0px;
+}

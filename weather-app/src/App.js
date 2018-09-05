@@ -21,7 +21,7 @@ class App extends Component {
 
   constructor(){
     super();
-    this.state= {city: 'Nueva ciudad'};
+    this.state= {city: null};
     //this.state= just can be used in the constructor of the component in another place we need to use set.state
   }
   handleSelectedLocation = city => {
@@ -49,9 +49,10 @@ class App extends Component {
           <Col xs= {12} md={6}>
             <Paper zDepth={4}>
               <div className='detail'>
-                <ForecastExtended city={city}>
-
-                </ForecastExtended>
+                {
+                  city &&
+                  <ForecastExtended city={city}></ForecastExtended>
+                }
               </div>
           </Paper>
           </Col>
